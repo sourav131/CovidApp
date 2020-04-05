@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import axios from 'axios';
-import {format, parse} from 'date-fns';
+import {format, parse, subDays} from 'date-fns';
 
 import Patients from './patients';
 import DownloadBlock from './downloadblock';
@@ -28,7 +28,7 @@ function PatientDB(props) {
     detectedstate: '',
     detecteddistrict: '',
     detectedcity: '',
-    dateannounced: format(new Date(), 'dd/MM/yyyy'),
+    dateannounced: format(subDays(new Date(), 1), 'dd/MM/yyyy'),
   });
 
   useEffect(() => {
@@ -320,7 +320,7 @@ function PatientDB(props) {
       </div>
 
       <div className="header fadeInUp" style={{animationDelay: '0.3s'}}>
-        <h1>Patients Database</h1>
+        <h1>Patient Database</h1>
         <h3>No. of Patients: {patients.length}</h3>
 
         <div className="deep-dive">
